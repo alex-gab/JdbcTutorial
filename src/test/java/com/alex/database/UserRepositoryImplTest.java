@@ -1,5 +1,6 @@
 package com.alex.database;
 
+import org.dbunit.Assertion;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
@@ -15,9 +16,6 @@ import java.io.File;
 
 import static com.alex.database.PropertiesHolder.*;
 import static java.nio.charset.Charset.forName;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class UserRepositoryImplTest {
 
@@ -47,10 +45,11 @@ public class UserRepositoryImplTest {
         final IDataSet actualDataSet = databaseTester.getConnection().createDataSet();
         final ITable actualTable = actualDataSet.getTable("EMP_CLERK");
 
-        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File(getPath("/expectedDataSet.xml")));
+        final FlatXmlDataSetBuilder flatXmlDataSetBuilder = new FlatXmlDataSetBuilder();
+        IDataSet expectedDataSet = flatXmlDataSetBuilder.build(new File(getPath("/expectedDataSet.xml")));
         ITable expectedTable = expectedDataSet.getTable("EMP_CLERK");
 
-        assertThat(actualTable, is(equalTo(expectedTable)));
+        Assertion.assertEquals(expectedTable, actualTable);
     }
 
     private IDataSet readDataSet() throws Exception {
