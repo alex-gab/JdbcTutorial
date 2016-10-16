@@ -34,6 +34,8 @@ public class UserRepositoryImplTest {
     @Before
     public void importDataSet() throws Exception {
         IDataSet dataSet = readDataSet();
+//        final IDataSet dataSet = readBuilderDataSet();
+//        final IDataSet dataSet = readGeneratedBuilderDataSet();
         cleanlyInsert(dataSet);
     }
 
@@ -55,6 +57,27 @@ public class UserRepositoryImplTest {
     private IDataSet readDataSet() throws Exception {
         return new FlatXmlDataSetBuilder().build(new File(getPath("/dataset.xml")));
     }
+
+//    private IDataSet readBuilderDataSet() throws DataSetException {
+//        ColumnSpec<String> ename = ColumnSpec.newColumn("ENAME");
+//        ColumnSpec<Date> hiredate = ColumnSpec.newColumn("HIREDATE");
+//        ColumnSpec<Integer> sal = ColumnSpec.newColumn("SAL");
+//        final DataSetBuilder builder = new DataSetBuilder();
+//        builder.newRow("EMP_CLERK").with(ename, "JAMES").with(hiredate, new GregorianCalendar(1981, DECEMBER, 3).getTime()).with(sal, 950).add();
+//        builder.newRow("EMP_CLERK").with(ename, "SMITH").with(hiredate, new GregorianCalendar(1980, DECEMBER, 17).getTime()).with(sal, 800).add();
+//        builder.newRow("EMP_CLERK").with(ename, "ADAMS").with(hiredate, new GregorianCalendar(1983, JANUARY, 12).getTime()).with(sal, 1100).add();
+//        builder.newRow("EMP_CLERK").with(ename, "MILLER").with(hiredate, new GregorianCalendar(1982, JANUARY, 23).getTime()).with(sal, 1900).add();
+//        return builder.build();
+//    }
+//
+//    private IDataSet readGeneratedBuilderDataSet() throws DataSetException {
+//        final SchemaDataSetBuilder dataSetBuilder = new SchemaDataSetBuilder();
+//        dataSetBuilder.newEmpClerkRow().ENAME("JAMES").HIREDATE(new GregorianCalendar(1981, DECEMBER, 3).getTime()).SAL(950).add().
+//                newEmpClerkRow().ENAME("SMITH").HIREDATE(new GregorianCalendar(1980, DECEMBER, 17).getTime()).SAL(800).add().
+//                newEmpClerkRow().ENAME("ADAMS").HIREDATE(new GregorianCalendar(1983, JANUARY, 12).getTime()).SAL(1100).add().
+//                newEmpClerkRow().ENAME("MILLER").HIREDATE(new GregorianCalendar(1982, JANUARY, 23).getTime()).SAL(1900).add();
+//        return dataSetBuilder.build();
+//    }
 
     private void cleanlyInsert(IDataSet dataSet) throws Exception {
         databaseTester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);

@@ -42,6 +42,17 @@
             <scope>test</scope>
         </dependency>
         <!--<dependency>-->
+            <!--<groupId>de.ppi.dbunit.datasetbuilder</groupId>-->
+            <!--<artifactId>dbunit-datasetbuilder</artifactId>-->
+            <!--<version>1.4</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.dbunit</groupId>-->
+                    <!--<artifactId>dbunit</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
             <!--<groupId>org.dbunit.datasetbuilder</groupId>-->
             <!--<artifactId>dbunit-datasetbuilder-generator</artifactId>-->
             <!--<version>1.0</version>-->
