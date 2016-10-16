@@ -3,6 +3,6 @@
 //import org.dbunit.dataset.DataSetException;
 //import org.dbunit.dataset.IDataSet;
 //
-//public interface ISchemaDataSetBuilder {
+//interface ISchemaDataSetBuilder {
 //    IDataSet build() throws DataSetException;
 //}

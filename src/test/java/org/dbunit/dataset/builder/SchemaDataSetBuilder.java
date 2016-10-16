@@ -1,25 +1,13 @@
 //package org.dbunit.dataset.builder;
 //
 //import org.dbunit.dataset.DataSetException;
-//import org.dbunit.dataset.IDataSet;
 //
-//public final class SchemaDataSetBuilder implements ISchemaDataSetBuilder {
-//    private final DataSetBuilder dataSetBuilder;
-//
+//public final class SchemaDataSetBuilder extends AbstractSchemaDataSetBuilder {
 //    public SchemaDataSetBuilder() throws DataSetException {
-//        this.dataSetBuilder = new DataSetBuilder();
+//        super(new DataSetBuilder());
 //    }
 //
 //    public final EmpClerkSchemaDataRowBuilder newEmpClerkRow() {
 //        return new EmpClerkSchemaDataRowBuilder(this, "EMP_CLERK");
-//    }
-//
-//    @Override
-//    public final IDataSet build() throws DataSetException {
-//        return dataSetBuilder.build();
-//    }
-//
-//    DataSetBuilder getUndelyingBuilder() {
-//        return dataSetBuilder;
 //    }
 //}
