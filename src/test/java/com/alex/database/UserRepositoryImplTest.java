@@ -5,6 +5,7 @@ import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
+import org.dbunit.dataset.builder.annotations.CreateDataSetBuilders;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.tools.RunScript;
@@ -17,6 +18,7 @@ import java.io.File;
 import static com.alex.database.PropertiesHolder.*;
 import static java.nio.charset.Charset.forName;
 
+@CreateDataSetBuilders
 public class UserRepositoryImplTest {
 
     private static final String JDBC_DRIVER = getDriver();
@@ -69,13 +71,13 @@ public class UserRepositoryImplTest {
 //        builder.newRow("EMP_CLERK").with(ename, "MILLER").with(hiredate, new GregorianCalendar(1982, JANUARY, 23).getTime()).with(sal, 1900).add();
 //        return builder.build();
 //    }
-//
+
 //    private IDataSet readGeneratedBuilderDataSet() throws DataSetException {
 //        final SchemaDataSetBuilder dataSetBuilder = new SchemaDataSetBuilder();
-//        dataSetBuilder.newEmpClerkRow().ENAME("JAMES").HIREDATE(new GregorianCalendar(1981, DECEMBER, 3).getTime()).SAL(950).add().
-//                newEmpClerkRow().ENAME("SMITH").HIREDATE(new GregorianCalendar(1980, DECEMBER, 17).getTime()).SAL(800).add().
-//                newEmpClerkRow().ENAME("ADAMS").HIREDATE(new GregorianCalendar(1983, JANUARY, 12).getTime()).SAL(1100).add().
-//                newEmpClerkRow().ENAME("MILLER").HIREDATE(new GregorianCalendar(1982, JANUARY, 23).getTime()).SAL(1900).add();
+//        dataSetBuilder.newEMP_CLERKRow().ENAME("JAMES").HIREDATE(new GregorianCalendar(1981, DECEMBER, 3).getTime()).SAL(950).add().
+//                newEMP_CLERKRow().ENAME("SMITH").HIREDATE(new GregorianCalendar(1980, DECEMBER, 17).getTime()).SAL(800).add().
+//                newEMP_CLERKRow().ENAME("ADAMS").HIREDATE(new GregorianCalendar(1983, JANUARY, 12).getTime()).SAL(1100).add().
+//                newEMP_CLERKRow().ENAME("MILLER").HIREDATE(new GregorianCalendar(1982, JANUARY, 23).getTime()).SAL(1900).add();
 //        return dataSetBuilder.build();
 //    }
 
