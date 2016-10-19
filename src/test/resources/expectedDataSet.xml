@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <EMP_CLERK ENAME="JAMES" HIREDATE="1981-12-03 00:00:00.0" SAL="950"/>
-    <EMP_CLERK ENAME="SMITH" HIREDATE="1980-12-17 00:00:00.0" SAL="800"/>
-    <EMP_CLERK ENAME="ADAMS" HIREDATE="1983-01-12 00:00:00.0" SAL="1100"/>
-    <EMP_CLERK ENAME="MILLER" HIREDATE="1982-01-23 00:00:00.0" SAL="1900"/>
-    <EMP_CLERK ENAME="VASILE" HIREDATE="1986-02-02 00:00:00.0" SAL="2500"/>
+    <employee name="JAMES" HIREDATE="1981-12-03 00:00:00.0" salary="950"/>
+    <employee name="SMITH" HIREDATE="1980-12-17 00:00:00.0" salary="800"/>
+    <employee name="ADAMS" HIREDATE="1983-01-12 00:00:00.0" salary="1100"/>
+    <employee name="MILLER" HIREDATE="1982-01-23 00:00:00.0" salary="1900"/>
+    <employee name="VASILE" HIREDATE="1986-02-02 00:00:00.0" salary="2500"/>
 </dataset>

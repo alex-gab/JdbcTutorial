@@ -1,5 +1,5 @@
-CREATE TABLE EMP_CLERK (
-  ENAME    VARCHAR,
-  HIREDATE DATE,
-  SAL      NUMBER
+CREATE TABLE Employee (
+  name    VARCHAR,
+  hiredate DATE,
+  salary      NUMBER
 )

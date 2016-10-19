@@ -48,21 +48,21 @@ public class UserRepositoryImplTest {
         userRepository.insertUser("VASILE", "1986-02-02", 2500);
 
         final IDataSet actualDataSet = databaseTester.getConnection().createDataSet();
-        final ITable actualTable = actualDataSet.getTable("EMP_CLERK");
+        final ITable actualTable = actualDataSet.getTable("Employee");
 
         final FlatXmlDataSetBuilder flatXmlDataSetBuilder = new FlatXmlDataSetBuilder();
         IDataSet expectedDataSet = flatXmlDataSetBuilder.build(new File(getPath("/expectedDataSet.xml")));
-        ITable expectedTable = expectedDataSet.getTable("EMP_CLERK");
+        ITable expectedTable = expectedDataSet.getTable("Employee");
 
         Assertion.assertEquals(expectedTable, actualTable);
     }
 
     private IDataSet readGeneratedBuilderDataSet() throws DataSetException {
         final SchemaDataSetBuilder dataSetBuilder = new SchemaDataSetBuilder();
-        dataSetBuilder.newEMP_CLERKRow().ENAME("JAMES").HIREDATE(new GregorianCalendar(1981, DECEMBER, 3).getTime()).SAL(950).add().
-                newEMP_CLERKRow().ENAME("SMITH").HIREDATE(new GregorianCalendar(1980, DECEMBER, 17).getTime()).SAL(800).add().
-                newEMP_CLERKRow().ENAME("ADAMS").HIREDATE(new GregorianCalendar(1983, JANUARY, 12).getTime()).SAL(1100).add().
-                newEMP_CLERKRow().ENAME("MILLER").HIREDATE(new GregorianCalendar(1982, JANUARY, 23).getTime()).SAL(1900).add();
+        dataSetBuilder.newEmployeeRow().name("JAMES").hiredate(new GregorianCalendar(1981, DECEMBER, 3).getTime()).salary(950).add().
+                newEmployeeRow().name("SMITH").hiredate(new GregorianCalendar(1980, DECEMBER, 17).getTime()).salary(800).add().
+                newEmployeeRow().name("ADAMS").hiredate(new GregorianCalendar(1983, JANUARY, 12).getTime()).salary(1100).add().
+                newEmployeeRow().name("MILLER").hiredate(new GregorianCalendar(1982, JANUARY, 23).getTime()).salary(1900).add();
         return dataSetBuilder.build();
     }
 
@@ -73,7 +73,7 @@ public class UserRepositoryImplTest {
         databaseTester.onSetup();
     }
 
-    private static String getPath(String filename) {
-        return UserRepositoryImplTest.class.getResource(filename).getPath();
+    private static String getPath(String filname) {
+        return UserRepositoryImplTest.class.getResource(filname).getPath();
     }
 }

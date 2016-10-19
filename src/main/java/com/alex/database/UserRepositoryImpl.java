@@ -13,7 +13,7 @@ public final class UserRepositoryImpl implements UserRepository {
             final Statement statement;
             statement = connection.createStatement();
 
-            final String sql = format("INSERT INTO EMP_CLERK " +
+            final String sql = format("INSERT INTO employee " +
                     "VALUES ('%s', '%s', %d)", name, hireDate, salary);
             statement.executeUpdate(sql);
         } catch (SQLException e) {
