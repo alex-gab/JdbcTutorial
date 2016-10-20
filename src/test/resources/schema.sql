@@ -1,11 +1,11 @@
 CREATE TABLE Employee (
   name    VARCHAR,
-  hiredate DATE,
-  salary      NUMBER
+  hiredate TIMESTAMP,
+  salary      INT
 );
 
 CREATE TABLE Department (
   deptname    VARCHAR,
-  foundingdate DATE,
-  minimumsalary      NUMBER
+  foundingdate TIMESTAMP,
+  minimumsalary      INT
 );
