@@ -23,8 +23,6 @@ import static java.util.Calendar.DECEMBER;
 import static java.util.Calendar.JANUARY;
 import static org.dbunit.builder.EmployeeRow.EmployeeRowBuilder.anEmployeeRow;
 
-//import org.dbunit.dataset.builder.SchemaDataSetBuilder;
-
 public class UserRepositoryImplTest {
 
     private static final String JDBC_DRIVER = getDriver();
