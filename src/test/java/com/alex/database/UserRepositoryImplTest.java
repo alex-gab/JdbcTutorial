@@ -3,10 +3,10 @@ package com.alex.database;
 import org.dbunit.Assertion;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.builder.DataSetBuilder;
 import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.builder.SchemaDataSetBuilder;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.tools.RunScript;
@@ -21,6 +21,9 @@ import static com.alex.database.PropertiesHolder.*;
 import static java.nio.charset.Charset.forName;
 import static java.util.Calendar.DECEMBER;
 import static java.util.Calendar.JANUARY;
+import static org.dbunit.builder.EmployeeRow.EmployeeRowBuilder.anEmployeeRow;
+
+//import org.dbunit.dataset.builder.SchemaDataSetBuilder;
 
 public class UserRepositoryImplTest {
 
@@ -58,11 +61,28 @@ public class UserRepositoryImplTest {
     }
 
     private IDataSet readGeneratedBuilderDataSet() throws DataSetException {
-        final SchemaDataSetBuilder dataSetBuilder = new SchemaDataSetBuilder();
-        dataSetBuilder.newEmployeeRow().name("JAMES").hiredate(new GregorianCalendar(1981, DECEMBER, 3).getTime()).salary(950).add().
-                newEmployeeRow().name("SMITH").hiredate(new GregorianCalendar(1980, DECEMBER, 17).getTime()).salary(800).add().
-                newEmployeeRow().name("ADAMS").hiredate(new GregorianCalendar(1983, JANUARY, 12).getTime()).salary(1100).add().
-                newEmployeeRow().name("MILLER").hiredate(new GregorianCalendar(1982, JANUARY, 23).getTime()).salary(1900).add();
+        final DataSetBuilder dataSetBuilder = DataSetBuilder.aDataSet().
+                withRow(anEmployeeRow().
+                        name("JAMES").
+                        hiredate(new GregorianCalendar(1981, DECEMBER, 3).getTime()).
+                        salary(950).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("SMITH").
+                        hiredate(new GregorianCalendar(1980, DECEMBER, 17).getTime()).
+                        salary(800).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("ADAMS").
+                        hiredate(new GregorianCalendar(1983, JANUARY, 12).getTime()).
+                        salary(1100).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("MILLER").
+                        hiredate(new GregorianCalendar(1982, JANUARY, 23).getTime()).
+                        salary(1900).
+                        build());
+
         return dataSetBuilder.build();
     }
 
