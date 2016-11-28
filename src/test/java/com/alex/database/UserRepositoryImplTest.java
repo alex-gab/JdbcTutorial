@@ -7,20 +7,17 @@ import org.dbunit.builder.DataSetBuilder;
 import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.tools.RunScript;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.GregorianCalendar;
 
 import static com.alex.database.PropertiesHolder.*;
 import static java.nio.charset.Charset.forName;
-import static java.util.Calendar.DECEMBER;
-import static java.util.Calendar.JANUARY;
+import static java.util.Calendar.*;
 import static org.dbunit.builder.EmployeeRow.EmployeeRowBuilder.anEmployeeRow;
 
 public class UserRepositoryImplTest {
@@ -51,8 +48,10 @@ public class UserRepositoryImplTest {
         final IDataSet actualDataSet = databaseTester.getConnection().createDataSet();
         final ITable actualTable = actualDataSet.getTable("Employee");
 
-        final FlatXmlDataSetBuilder flatXmlDataSetBuilder = new FlatXmlDataSetBuilder();
-        IDataSet expectedDataSet = flatXmlDataSetBuilder.build(new File(getPath("/expectedDataSet.xml")));
+//        final FlatXmlDataSetBuilder flatXmlDataSetBuilder = new FlatXmlDataSetBuilder();
+//        IDataSet expectedDataSet = flatXmlDataSetBuilder.build(new File(getPath("/expectedDataSet.xml")));
+        IDataSet expectedDataSet = getExpectedDataSet();
+
         ITable expectedTable = expectedDataSet.getTable("Employee");
 
         Assertion.assertEquals(expectedTable, actualTable);
@@ -82,6 +81,36 @@ public class UserRepositoryImplTest {
                         build());
 
         return dataSetBuilder.build();
+    }
+
+    private IDataSet getExpectedDataSet() {
+        return DataSetBuilder.aDataSet().
+                withRow(anEmployeeRow().
+                        name("JAMES").
+                        hiredate(new GregorianCalendar(1981, DECEMBER, 3).getTime()).
+                        salary(950).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("SMITH").
+                        hiredate(new GregorianCalendar(1980, DECEMBER, 17).getTime()).
+                        salary(800).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("ADAMS").
+                        hiredate(new GregorianCalendar(1983, JANUARY, 12).getTime()).
+                        salary(1100).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("MILLER").
+                        hiredate(new GregorianCalendar(1982, JANUARY, 23).getTime()).
+                        salary(1900).
+                        build()).
+                withRow(anEmployeeRow().
+                        name("VASILE").
+                        hiredate(new GregorianCalendar(1986, FEBRUARY, 2).getTime()).
+                        salary(2500).
+                        build()).
+                build();
     }
 
     private void cleanlyInsert(IDataSet dataSet) throws Exception {
